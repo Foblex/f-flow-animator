@@ -1,27 +1,39 @@
-# FFlowAnimator
+# @foblex/flow-animator
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.4.
+Animation library for @foblex/flow, designed to provide smooth and customizable animations for your Angular projects.
 
-## Development server
+## Features
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+- Seamless integration with Angular applications.
+- Customizable animation sequences.
+- Supports both HTML and SVG animations.
 
-## Code scaffolding
+## Installation
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+To install the package, run:
 
-## Build
+```bash
+npm install @foblex/flow-animator
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Usage
 
-## Running unit tests
+Here's a basic example of how to use @foblex/flow-animator:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```typescript
+// In your component
+constructor(private fFlowAnimator: FFlowAnimatorService) {}
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+animateFlow() {
+  this.fFlowAnimator.animate('f-flow-0', {
+    items: [
+      [ { id: 'element1' } ],
+      // ...other items...
+    ],
+    duration: 14000,
+    removeOverlayAfterRowComplete: true
+  }).subscribe((result) => {
+    // Handle animation result
+  });
+}
+```
