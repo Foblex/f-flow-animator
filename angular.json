@@ -3,5 +3,37 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-  }
+    "f-flow-animator": {
+      "projectType": "library",
+      "root": "projects/f-flow-animator",
+      "sourceRoot": "projects/f-flow-animator/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/f-flow-animator/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/f-flow-animator/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/f-flow-animator/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/f-flow-animator/src/test.ts",
+            "tsConfig": "projects/f-flow-animator/tsconfig.spec.json",
+            "karmaConfig": "projects/f-flow-animator/karma.conf.js"
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "f-flow-animator"
 }
