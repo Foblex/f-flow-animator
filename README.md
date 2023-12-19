@@ -1,5 +1,7 @@
 # @foblex/flow-animator
 
+![Example Animation](demo.gif)
+
 Animation library for @foblex/flow, designed to provide smooth and customizable animations for your Angular projects.
 
 ## Features
