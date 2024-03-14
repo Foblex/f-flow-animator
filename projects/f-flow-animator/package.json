@@ -1,6 +1,6 @@
 {
   "name": "@foblex/flow-animator",
-  "version": "16.0.0",
+  "version": "16.0.5",
   "description": "Animation library for @foblex/flow.",
   "main": "index.js",
   "types": "index.d.ts",

@@ -38,7 +38,7 @@ export class GetAllAnimatedElementsHandler {
 
 
   private getAllNodes(flowElement: HTMLElement): HTMLElement[] {
-    const result = Array.from(flowElement.getElementsByTagName('f-node')) as HTMLElement[];
+    const result = Array.from(flowElement.querySelectorAll('[fNode]')) as HTMLElement[];
     return result;
   }
 
@@ -55,10 +55,10 @@ export class GetAllAnimatedElementsHandler {
     return flowElement;
   }
 
-  private getNodeElement(nodeId: any): HTMLElement {
-    const nodeElement: HTMLElement | undefined = this.allNodes.find((node: HTMLElement) => node.id === nodeId);
+  private getNodeElement(nodeId: string): HTMLElement {
+    const nodeElement: HTMLElement | undefined = this.allNodes.find((x: HTMLElement) => x.dataset['fNodeId'] === nodeId);
     if (!nodeElement) {
-      throw new Error(`FNodeComponent with id ${ nodeId } not found`);
+      throw new Error(`FNodeDirective with id ${ nodeId } not found`);
     }
     return nodeElement;
   }
@@ -69,13 +69,11 @@ export class GetAllAnimatedElementsHandler {
       throw new Error(`FConnectionComponent with id ${ connectionId } not found`);
     }
 
-    const paths = connectionElement.getElementsByTagName('path');
-
-    const length = paths.length;
-    if (length < 2) {
+    const path = connectionElement.querySelector('.f-connection-path') as SVGPathElement;
+    if (!path) {
       throw new Error(`FConnectionComponent with id ${ connectionId } has no path element`);
     }
 
-    return paths[ 1 ];
+    return path;
   }
 }
